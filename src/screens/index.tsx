@@ -1,9 +1,15 @@
-import LoginScreen from "./auth/LoginScreen";
-import HomeScreen from "./home/HomeScreen";
-import SplashScreen from "./SplashScreen";
+import SplashScreen from './SplashScreen';
+import ForgotPassword from './auth/ForgotPassword';
+import LoginScreen from './auth/LoginScreen';
+import SignUpScreen from './auth/SignUpScreen';
+import VerificationScreen from './auth/VerificationScreen';
+import HomeScreen from './home/HomeScreen';
 
 export {
-    HomeScreen,
-    LoginScreen,
-    SplashScreen,
-}
+  HomeScreen,
+  LoginScreen,
+  SplashScreen,
+  VerificationScreen,
+  ForgotPassword,
+  SignUpScreen,
+};
