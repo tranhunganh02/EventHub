@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../EventHub_Backend"
+		},
+		{
+			"path": "../../Node/Grocery_Online"
+		},
+		{
+			"path": "../../Node/VKUniversal/Backend"
+		}
+	],
+	"settings": {}
+}

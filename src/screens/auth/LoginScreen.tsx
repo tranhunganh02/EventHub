@@ -1,4 +1,4 @@
-import { View, Text, Button, SafeAreaView, Image, Switch } from 'react-native'
+import { View, Text, Button, SafeAreaView, Image, Switch, Alert } from 'react-native'
 import React, { useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ButtonComponent, ContainerComponent, InputComponent, RowComponent, SectionComponent, SpaceComponent, TextComponent } from '../../components'
@@ -7,11 +7,43 @@ import { Lock, Sms } from 'iconsax-react-native'
 import { appColors } from '../../constants/appColor'
 import { appInfo } from '../../constants/appInfors'
 import SocialLogin from './component/SocialLogin'
+import authenticationAPI from '../../apis/authApi'
+import { useDispatch } from 'react-redux'
+import { addAuth } from '../../state/reducers/authReducer'
+import { Validate } from '../../utils/validate'
 
 const LoginScreen = ({navigation} : any) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [isRememberMe, setIsRememberMe] = useState(false)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isRemember, setIsRemember] = useState(true);
+  const [isDisable, setIsDisable] = useState(true);
+
+  const dispatch = useDispatch();
+
+  const handleLogin = async () => {
+    const emailValidation = Validate.email(email);
+    if (emailValidation) {
+      try {
+        const res = await authenticationAPI.HandleAuthentication(
+          'access/login',
+          {email, password},
+          'post',
+        );
+        console.log(res.data);
+        
+        dispatch(addAuth(res.data.metadata));
+
+        await AsyncStorage.setItem(
+          'auth',
+          isRemember ? JSON.stringify(res.data.metadata) : email,
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      Alert.alert('Email is not correct!!!!');
+    }
+  };
   return (
     <ContainerComponent  isImageBackground isScroll>
       <SectionComponent
@@ -50,8 +82,8 @@ const LoginScreen = ({navigation} : any) => {
         <RowComponent justify='space-between'>
           <RowComponent>
             <Switch
-              value={isRememberMe}
-              onChange={() => setIsRememberMe(!isRememberMe)}
+              value={isRemember}
+              onChange={() => setIsRemember(!isRemember)}
               trackColor={{ true: appColors.primary, false: appColors.white }}
             />
             <TextComponent text=' Remember me' />
@@ -68,15 +100,8 @@ const LoginScreen = ({navigation} : any) => {
         <ButtonComponent
           text='Login'
           type='primary'
-          onPress={() => {
-            // if(email && password){
-            //   if(isRememberMe){
-            //     AsyncStorage.setItem('email', email)
-            //     AsyncStorage.setItem('password', password)
-            //   }
-            //   // navigate to HomeScreen
-            // }
-          }}
+          //disable={isDisable}
+          onPress={handleLogin}
         />
       </SectionComponent>
       <SocialLogin />

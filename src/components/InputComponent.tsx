@@ -12,11 +12,12 @@ interface InputProps {
   isPassword?: boolean,
   type?: KeyboardType,
   allowClear?: boolean,
+  onEnd?: () => void
 }
 
 const InputComponent = (props: InputProps) => {
 
-  const {value, onChange, affix, placeholder, suffix, isPassword, type, allowClear } = props;
+  const {value, onChange, affix, placeholder, suffix, isPassword, type, allowClear, onEnd } = props;
 
   const [isShowPass, setShowPass] = useState(isPassword ?? false);
 
@@ -24,12 +25,13 @@ const InputComponent = (props: InputProps) => {
     <View style={[styles.inputContainer]}>
       {affix ?? affix}
         <TextInput 
-        style={styles.input}
+          style={styles.input}
           placeholder={placeholder ?? ''}
           onChangeText={val => onChange(val)}
           value={value}
           secureTextEntry={isShowPass}
           keyboardType={type?? 'default'}
+          onEndEditing={onEnd}
         />
       {suffix ?? suffix}
       <TouchableOpacity
@@ -74,5 +76,6 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     paddingHorizontal:14,
+    color: appColors.black
   }
 })

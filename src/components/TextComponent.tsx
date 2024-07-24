@@ -24,7 +24,7 @@ interface Props {
           {
             color: color ?? appColors.text,
             flex: flex ?? 0,
-            fontSize: size ?? title ? 24 : 16,
+            fontSize: size ?? title ? size : 12,
             fontFamily: font ?? title ? fontFamilies.bold : fontFamilies.regular,
           },
           styles,

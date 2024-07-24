@@ -12,7 +12,7 @@ export const globalStyles = StyleSheet.create ({
    },
    text: {
       color: appColors.white,
-      fontSize: 14,
+      fontSize: 12,
      fontFamily: fontFamilies.regular,
     },
     button: {

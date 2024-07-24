@@ -20,11 +20,11 @@ import {
       | undefined;
     styles?: StyleProp<ViewStyle>;
     children: ReactNode;
-    //onPress?: () => void;
+    onPress?: () => void;
   }
   
   const RowComponent = (props: Props) => {
-    const {styles, justify, children,} = props;
+    const {styles, justify, children, onPress} = props;
   
     const localStyle = [
       globalStyles.rowStart,
@@ -34,14 +34,14 @@ import {
       styles,
     ];
   
-    // return onPress ? (
-    //   <TouchableOpacity activeOpacity={0.9} onPress={onPress} style={localStyle}>
-    //     {children}
-    //   </TouchableOpacity>
-    // ) : (
-    //   <View style={localStyle}>{children}</View>
-    // );
-    return <View style={localStyle}>{children}</View>;
+    return onPress ? (
+      <TouchableOpacity activeOpacity={0.9} onPress={onPress} style={localStyle}>
+        {children}
+      </TouchableOpacity>
+    ) : (
+      <View style={localStyle}>{children}</View>
+    );
+   //return <View style={localStyle}>{children}</View>;
   };
   
   export default RowComponent;
