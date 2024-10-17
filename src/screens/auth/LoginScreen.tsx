@@ -56,7 +56,7 @@ const LoginScreen = ({navigation} : any) => {
         <Image source={require('../../assets/images/text-logo.png')}
           style={{
             width: appInfo.sizes.WIDTH * 0.52,
-            height: appInfo.sizes.HEIGHT * 0.17,
+            height: appInfo.sizes.HEIGHT * 0.19,
             marginBottom: 10
           }}
         />
@@ -115,8 +115,12 @@ const LoginScreen = ({navigation} : any) => {
           />
         </RowComponent>
       </SectionComponent>
+      <SectionComponent styles={{alignItems: 'center'}}>
+        <TextComponent text='�� 2022 Text App. All rights reserved.' />
+      </SectionComponent>
     </ContainerComponent>
   )
 }
 
 export default LoginScreen
+

@@ -99,22 +99,26 @@ const SignUpScreen = ({ navigation }: any) => {
 
   const handleRegister = async () => {
    if(values.email || values.password || values.confirmPassword) {
-    const api = `access/verification`;
+    //const api = `access/verification`;
+    const api = `auth/signup`;
     setIsLoading(true);
     try {
       const res = await authenticationAPI.HandleAuthentication(
         api,
-        {email: values.email},
+
+        {email: 'hunganh.dh2021@gmail.com', username: 'hung anh', password: values.password, status: Number(0), role:["ROLE_SINHVIEN"]},
         'post',
       );
 
-      setIsLoading(false);
-      dispatch(addAuth(res.data.metadata))
-      await AsyncStorage.setItem('auth',JSON.stringify(res.data.metadata))
-      navigation.navigate('VerificationScreen', {
-        code: res.data.metadata.code,
-        ...values,
-      });
+      // setIsLoading(false);
+      // dispatch(addAuth(res.data.metadata))
+      // await AsyncStorage.setItem('auth',JSON.stringify(res.data.metadata))
+      // navigation.navigate('VerificationScreen', {
+      //   code: res.data.metadata.code,
+      //   ...values,
+      // });
+      setIsLoading(false)
+      console.log(res.data);
       
     } catch (error) {
       console.log(error);

@@ -1,6 +1,6 @@
 export const appColors = {
   primary: '#5669FF', // Keep primary color
-  secondary: '#F2F2F2', // Light gray for background
+  secondary: '#4A43EC', // Light gray for background
   text: '#120D26', // Main text color
   textSecondary: '#666666', // Secondary text color (e.g., for placeholders)
   accent: '#FFC107', // Yellow accent color

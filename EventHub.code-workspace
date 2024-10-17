@@ -11,6 +11,12 @@
 		},
 		{
 			"path": "../../Node/VKUniversal/Backend"
+		},
+		{
+			"path": "../../Node/EventHub_Backend_micro"
+		},
+		{
+			"path": "../../Node/booking-microservices-expressjs"
 		}
 	],
 	"settings": {}

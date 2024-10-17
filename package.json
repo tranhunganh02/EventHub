@@ -18,7 +18,7 @@
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.10.1",
     "@reduxjs/toolkit": "^2.2.6",
-    "axios": "^1.7.2",
+    "axios": "^1.8.2",
     "iconsax-react-native": "^0.0.8",
     "install": "^0.13.0",
     "npm": "^10.8.1",
